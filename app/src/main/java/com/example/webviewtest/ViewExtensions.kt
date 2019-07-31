@@ -1,6 +1,7 @@
 package com.example.webviewtest
 
 import android.app.Activity
+import android.graphics.Point
 import android.graphics.Rect
 import android.util.Log
 import android.view.View
@@ -48,4 +49,9 @@ fun Activity.readFromAsset(fileName: String): String {
     return assets.open(fileName).bufferedReader().use{
         return@use it.readText()
     }
+}
+
+fun View.getLocationOnScreen(): Point {
+    val location = IntArray(2).apply(::getLocationOnScreen)
+    return Point(location[0],location[1])
 }
