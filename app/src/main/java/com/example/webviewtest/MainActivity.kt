@@ -30,9 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         onKeyboardOpenListener(opened = {
             Observable.fromCallable {
-                val screenPos = IntArray(2)
-                linerLayout.getLocationOnScreen(screenPos)
-                val webviewPosition = screenPos[1] // [1] for Y position of the bottom
+                val webviewPosition = linerLayout.getLocationOnScreen().y
                 val offest = 8
 
                 webView.evaluateJavascript("getElementPositionById()") { value ->
