@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val html = readFromAsset("content/pages/index.html")
+        val html = readFromAsset("content/pages/svg_demo.html")
 
         webView.addJavascriptInterface(JsInterface(this) , "jsInterface")
         webView.settings.javaScriptEnabled = true
