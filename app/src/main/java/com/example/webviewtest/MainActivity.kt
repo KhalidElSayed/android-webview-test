@@ -2,13 +2,9 @@ package com.example.webviewtest
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.webkit.ValueCallback
 import android.webkit.WebChromeClient
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import io.reactivex.Observable
-import kotlinx.android.synthetic.main.activity_main.*
-
+import kotlinx.android.synthetic.main.activity_main_simple.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -16,19 +12,22 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main_simple)
 
-        val html = readFromAsset("content/pages/svg_demo.html")
+        val html = readFromAsset("content/pages/preview_sample.html")
+        val htmlTemplate = "<html><head></head><body><img src=\"file:///android_asset/content/svg/q1_c.svg\"><p>Hello Webview.</p></body></html>"
 
         webView.addJavascriptInterface(JsInterface(this) , "jsInterface")
         webView.settings.javaScriptEnabled = true
         webView.webChromeClient = WebChromeClient()
-        //webView.loadUrl("file:///android_asset/content/pages/index.html")
-        webView.loadDataWithBaseURL(null, html, "text/html", "UTF-8", null)
+        webView.loadUrl("file:///android_asset/content/pages/preview_sample.html")
+//        webView.loadDataWithBaseURL("file:///android_asset/content/", html, "text/html", "UTF-8", null)
+
+//        webView.loadDataWithBaseURL(null, htmlTemplate, "text/html", "utf-8",null);
 
 //        val webviewPosition = webView.getLocationInWindow()
 
-        onKeyboardOpenListener(opened = {
+        /*onKeyboardOpenListener(opened = {
             Observable.fromCallable {
                 val webviewPosition = linerLayout.getLocationOnScreen().y
                 val offest = 8
@@ -39,6 +38,6 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this@MainActivity, "webView position is: $webviewPosition", Toast.LENGTH_SHORT).show()
                 }
             }.blockingFirst()
-        })
+        })*/
     }
 }
