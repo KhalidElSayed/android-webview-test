@@ -15,13 +15,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main_simple)
 
         val html = readFromAsset("content/pages/preview_sample.html")
-        val htmlTemplate = "<html><head></head><body><img src=\"file:///android_asset/content/svg/q1_c.svg\"><p>Hello Webview.</p></body></html>"
+//        val htmlTemplate = "<html><head></head><body><img src=\"file:///android_asset/content/svg/q1_c.svg\"><p>Hello Webview.</p></body></html>"
 
         webView.addJavascriptInterface(JsInterface(this) , "jsInterface")
         webView.settings.javaScriptEnabled = true
         webView.webChromeClient = WebChromeClient()
-        webView.loadUrl("file:///android_asset/content/pages/preview_sample.html")
-//        webView.loadDataWithBaseURL("file:///android_asset/content/", html, "text/html", "UTF-8", null)
+//        webView.loadUrl("file:///android_asset/content/pages/preview_sample.html")
+        webView.loadDataWithBaseURL("file:///android_asset/content/", html, "text/html", "UTF-8", null)
 
 //        webView.loadDataWithBaseURL(null, htmlTemplate, "text/html", "utf-8",null);
 
