@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>Hello</title>
+
+      <script src="file:///android_asset/content/js/js-test.js" type="text/javascript"></script>
+
+    <!--<style>
+      body, html {
+        height: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #F89821;
+        background-color: #ffffff;
+        padding: 20px;
+        margin-bottom: 100px;
+      }
+    </style>-->
+
+  </head>
+  <body>
+  <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> <br/><br/><br/><br/><br/><br/><br/><br/>
+  <input id="btn1" type="button" value="Say hello" onClick="showAndroidToast('Hello Android!')" />
+      <br/><br/>
+      <!--<input type="button" value="Show Version" onClick="showVersion('called within the html')" />-->
+      <input id="btn2" type="button" value="Show Version" onClick="getElementPositionById(this.id)" />
+      <br/><br/>
+      <input id="input1" type="text" value="Show Version" onfocus="getElementPositionById(this.id)" />
+      <br/><br/>
+      <p id="version"></p>
+  </body>
+</html>

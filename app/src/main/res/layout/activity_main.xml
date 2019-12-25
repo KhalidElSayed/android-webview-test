@@ -6,59 +6,50 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-    <androidx.core.widget.NestedScrollView
-            android:id="@+id/scrollView"
+    <RelativeLayout
+            android:id="@+id/linerLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fillViewport="true">
+            android:focusableInTouchMode="true">
 
-        <LinearLayout
-                android:id="@+id/linerLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:focusableInTouchMode="true"
-                android:orientation="vertical">
+        <Button
+                android:id="@+id/btnCurrent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Current WebView "/>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvAssessmentPracticeTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="40dp"
-                    android:lineSpacingExtra="6sp"
-                    android:textColor="#333333"
-                    android:textSize="30sp"/>
+        <Button
+                android:id="@+id/btnNewImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnCurrent"
+                android:layout_centerHorizontal="true"
+                android:text="New WebView (SVG - Img)"/>
 
-            <WebView
-                    android:id="@+id/webView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+        <Button
+                android:id="@+id/btnNewObject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnNewImg"
+                android:layout_centerHorizontal="true"
+                android:text="New WebView (SVG - Object)"/>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:layout_marginTop="30dp"
-                    android:textColor="#707070"
-                    android:text="You can edit your answers any time before the due date."
-            />
+        <Button
+                android:id="@+id/btnNewPng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnNewObject"
+                android:layout_centerHorizontal="true"
+                android:text="New WebView (Png)"/>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvAssessmentSubmit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="38dp"
-                    android:layout_marginTop="7.5dp"
-                    android:layout_marginBottom="30dp"
-                    android:gravity="center"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:text="SUBMIT"
-                    android:textColor="@android:color/white"
-                    android:textSize="13sp"
-                    android:layout_gravity="end"/>
+        <Button
+                android:id="@+id/btnNewSvg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnNewPng"
+                android:layout_centerHorizontal="true"
+                android:text="New WebView (External svg)"/>
 
-        </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
-
+    </RelativeLayout>
 </LinearLayout>

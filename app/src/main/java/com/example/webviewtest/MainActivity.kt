@@ -1,14 +1,10 @@
 package com.example.webviewtest
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
-import android.webkit.ValueCallback
-import android.webkit.WebChromeClient
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_main.*
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -18,27 +14,41 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val html = readFromAsset("content/pages/index.html")
+        val intent = Intent(this, WebActivity::class.java)
 
-        webView.addJavascriptInterface(JsInterface(this) , "jsInterface")
-        webView.settings.javaScriptEnabled = true
-        webView.webChromeClient = WebChromeClient()
-        //webView.loadUrl("file:///android_asset/content/pages/index.html")
-        webView.loadDataWithBaseURL(null, html, "text/html", "UTF-8", null)
+        btnCurrent.setOnClickListener {
+            intent.putExtra(PAGE_URL, CURRENT_PAGE_URL)
+            startActivity(intent)
+        }
 
-//        val webviewPosition = webView.getLocationInWindow()
+        btnNewImg.setOnClickListener {
+            intent.putExtra(PAGE_URL, NEW_PAGE_URL)
+            startActivity(intent)
+        }
 
-        onKeyboardOpenListener(opened = {
-            Observable.fromCallable {
-                val webviewPosition = linerLayout.getLocationOnScreen().y
-                val offest = 8
+        btnNewObject.setOnClickListener {
+            intent.putExtra(PAGE_URL, NEW_PAGE_OBJECT_URL)
+            startActivity(intent)
+        }
 
-                webView.evaluateJavascript("getElementPositionById()") { value ->
-                    scrollView.scrollTo(0, webviewPosition + value!!.toInt() + offest)
-                    Toast.makeText(this@MainActivity, "input position is: $value", Toast.LENGTH_SHORT).show()
-                    Toast.makeText(this@MainActivity, "webView position is: $webviewPosition", Toast.LENGTH_SHORT).show()
-                }
-            }.blockingFirst()
-        })
+        btnNewPng.setOnClickListener {
+            intent.putExtra(PAGE_URL, NEW_PAGE_TINY_PNG_URL)
+            startActivity(intent)
+        }
+
+        btnNewSvg.setOnClickListener {
+            intent.putExtra(PAGE_URL, NEW_PAGE_EXTERNAL_SVG_URL)
+            startActivity(intent)
+        }
+    }
+
+    companion object {
+        private const val PAGE_URL = "page_url"
+        private const val CURRENT_PAGE_URL = "https://beta-nagwa-media.s3.amazonaws.com/gabr/11_q_assessment.html"
+        private const val NEW_PAGE_URL = "https://beta-nagwa-media.s3.amazonaws.com/gabr/new+design.htm"
+        private const val NEW_PAGE_OBJECT_URL = "file:///android_asset/content/pages/new_object.html"
+        private const val NEW_PAGE_PNG_URL = "https://beta-nagwa-media.s3.amazonaws.com/gabr/new+design+with+png.htm"
+        private const val NEW_PAGE_TINY_PNG_URL = "https://beta-nagwa-media.s3.amazonaws.com/gabr/new+design+with+tinypng.htm"
+        private const val NEW_PAGE_EXTERNAL_SVG_URL = "https://www.nagwa.com/en/worksheets/593162506870/"
     }
 }
