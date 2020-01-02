@@ -44,7 +44,8 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val PAGE_URL = "page_url"
-        private const val CURRENT_PAGE_URL = "https://beta-nagwa-media.s3.amazonaws.com/gabr/11_q_assessment.html"
+        private const val CURRENT_PAGE_URL = "file:///android_asset/content/pages/index.html"
+//        private const val CURRENT_PAGE_URL = "https://beta-nagwa-media.s3.amazonaws.com/gabr/11_q_assessment.html"
         private const val NEW_PAGE_URL = "https://beta-nagwa-media.s3.amazonaws.com/gabr/new+design.htm"
         private const val NEW_PAGE_OBJECT_URL = "file:///android_asset/content/pages/new_object.html"
         private const val NEW_PAGE_PNG_URL = "https://beta-nagwa-media.s3.amazonaws.com/gabr/new+design+with+png.htm"
