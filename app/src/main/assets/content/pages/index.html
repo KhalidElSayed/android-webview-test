@@ -9,6 +9,25 @@
     <title>Hello</title>
 
     <script src="file:///android_asset/content/js/js-test.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.5.12/Rx.js"></script>
+
+    <script type="text/javascript">
+        function rxOnClick() {
+            var rxBtn = document.getElementById('rxBtn');
+
+            Rx.Observable.fromEvent(rxBtn, 'click')
+                .map(event => event.currentTarget.value)
+                .map(btnValue => "Change Answer")
+                .map(text => rxBtn.value = text)
+                .subscribe(text => document.getElementById("result").innerHTML += text + ' This is the final result.');
+
+            //Rx.Observable.from([1,2,3])
+              //  .map(i => i + 'number')
+            // .scan((count, change) => count + change)
+            // .subscribe(x => console.log(x));
+                //.subscribe(x => document.getElementById("result").innerHTML += x + ':');
+        }
+    </script>
 
     <!--<style>
       body, html {
@@ -26,7 +45,7 @@
 
 </head>
 
-<body>
+<body onload="rxOnClick();">
 <br/>
 <br/>
 <br/>
@@ -43,8 +62,10 @@
 <br/>
 <br/>
 <br/>
+<input id="rxBtn" type="button" value="RxJs Test"  />
 <br/>
 <br/>
+<p id="result"></p>
 <br/>
 <br/>
 <br/>
